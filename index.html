@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="Module" ng-controller="Controller">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <title>Redding Water Time</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+        <script src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-0.11.0.min.js"></script>
+        <script>
+            angular.module("Module",[])
+                .controller("Controller",function($scope/*,$filter*/){
+                    $scope.CurrentTime=Date.now();
+                    $scope.WaterNow="Can/Cannot";
+                    $scope.WaterUntil="00:00 am/pm";
+                    //$scope.CurrentTime=$filter($scope.CurrentTime)(date,"shortTime");
+                    console.log($scope.CurrentTime);
+                    $scope.HandWaterNow="Can/Cannot";
+                    $scope.HandWaterUntil="00:00 am/pm";
+                });
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Redding, CA: <small>Watering Time</small></h2>
+                    <h3>Current Time: <small>{{CurrentTime|date:"EEEE h:mm a"}}</small></h3>
+                    <form role="form">
+                        <fieldset class="form-group">
+                            <label class="control-label col-xs-6 col-sm-4 col-md-3" for="StreetNumber">What is your Street Number?</label>
+                            <div class="col-xs-6 col-sm-4 col-md-1">
+                                <input class="form-control" id="StreetNumber" placeholder="4573">
+                            </div>
+                        </fieldset>
+                    </form>
+                    <h1>Outdoor Irrigation: <small>Ornamental Landscapes or Turf</small></h1>
+                    <h2>{{WaterNow}} be watered right now, <small>until {{WaterUntil}}.</small></h2>
+                    <h1>Hand Watering: <small>Hose (w/ shut-off nozzle), Bucket, Watering Can, or Manually Operated Drip System</small></h1>
+                    <h2>{{HandWaterNow}} be used right now, <small>until {{HandWaterUntil}}.</small></h2>
+                </div>
+            </div>
+        </div>
+        <a target="blank" href="//reddingutilities.com/index_139_3509903911.pdf">Press Release</a>
+    </body>
+</html>
